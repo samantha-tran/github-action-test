@@ -1,0 +1,22 @@
+# This is a basic workflow to help you get started with Actions
+
+name: create remote repo from pull request
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow when a pull request is created on the "main" branch
+  pull_request:
+    branches: [ "main" ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "create-remote-repo"
+  create-remote-repo:
+    # runs on VM provisionned with ubuntu image
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: test secret
+        run: |
+          echo ${{ secrets.ARTIFACTORY_TOKEN }}
