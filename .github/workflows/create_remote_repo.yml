@@ -18,5 +18,15 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: test secret
-        run: |
-          echo ${{ secrets.ARTIFACTORY_TOKEN }}
+        # Make sure secret is set up under repository settings
+        env:
+          ARTIFACTORY_TOKEN: ${{ secrets.ARTIFACTORY_TOKEN }}
+      # Check out current repo
+      - uses: actions/checkout@v3
+      
+      # Set up action to use python with version 3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+          
+      
