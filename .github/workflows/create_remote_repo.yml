@@ -1,0 +1,33 @@
+name: run python script from pull request
+
+######
+#
+# Ensure Artifactory token is set up as a repo secret
+#
+######
+
+on:
+  pull_request:
+    branches: ["main"] # Triggers the workflow when a pull request is created on the "main" branch
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest # runs on VM provisionned with ubuntu image
+
+    steps:
+      - name: Checkout repository content
+        uses: actions/checkout@v2 # Checkout the repository content to github runner.
+
+      - name: Set up python version
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.8" # Install the python version needed
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8 pytest
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Execute Python script # Run the run.py to get the latest data
+        run: python test.py`
