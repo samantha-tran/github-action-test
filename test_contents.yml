@@ -1,0 +1,14 @@
+- outer1:
+    inner1: Watermelon
+    inner2: Peach
+    inner3:
+      - Nectarine
+      - Rockmelon
+      - Strawberry
+- outer2:
+    inner1: Blackberry
+    inner2: Blueberry
+    inner3:
+      - Proscuitto
+      - Serrano
+      - Pancetta
