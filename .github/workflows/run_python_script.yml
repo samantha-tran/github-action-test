@@ -39,6 +39,7 @@ jobs:
         run: python ./script/test.py
 
   Merge-if-successfully:
+    needs: run-script
     runs-on: ubuntu-latest
     steps:
       - name: merge
