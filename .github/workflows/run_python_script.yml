@@ -44,5 +44,6 @@ jobs:
     if: ${{ always() && contains(join(needs.*.result, ','), 'success') }}
     steps:
       - name: merge
-        run: |
-          gh pr merge
+        run: gh pr merge
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
