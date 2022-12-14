@@ -41,8 +41,8 @@ jobs:
   Merge-if-successfully:
     needs: run-script
     runs-on: ubuntu-latest
+    if: ${{ always() && contains(join(needs.*.result, ','), 'success') }}
     steps:
       - name: merge
-        if: success() && steps.run-script.outcome == 'Success'
         run: |
           echo success
