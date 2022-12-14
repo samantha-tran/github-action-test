@@ -45,4 +45,4 @@ jobs:
     steps:
       - name: merge
         run: |
-          echo success
+          gh pr merge
