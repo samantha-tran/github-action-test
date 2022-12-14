@@ -40,10 +40,8 @@ jobs:
 
   Merge-if-successfully:
     runs-on: ubuntu-latest
-      steps:
-        - name: merge
-          if: success() && steps.run-script.outcome == 'success'
-          run: |
-            echo success
-
-
+    steps:
+      - name: merge
+        if: success() && steps.run-script.outcome == 'success'
+        run: |
+          echo success
