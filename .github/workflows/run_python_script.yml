@@ -43,6 +43,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: merge
-        if: success() && steps.run-script.outcome == 'success'
+        if: success() && steps.run-script.outcome == 'Success'
         run: |
           echo success
