@@ -37,3 +37,13 @@ jobs:
 
       - name: Execute Python script # Run the run.py to get the latest data
         run: python ./script/test.py
+
+  Merge-if-successfully:
+    runs-on: ubuntu-latest
+      steps:
+        - name: merge
+          if: success() && steps.run-script.outcome == 'success'
+          run: |
+            echo success
+
+
