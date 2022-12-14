@@ -43,7 +43,8 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ always() && contains(join(needs.*.result, ','), 'success') }}
     steps:
-      - name: merge
-        run: gh pr merge ${{ github.head_ref }}
+      - name: Enable Automerge
+        run: gh pr merge --auto --squash "$PR_URL"
         env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
