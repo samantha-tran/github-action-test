@@ -15,13 +15,19 @@ jobs:
     runs-on: ubuntu-latest # runs on VM provisionned with ubuntu image
 
     steps:
-      - name: Checkout repository content
-        uses: actions/checkout@v2 # Checkout the repository content to github runner.
+      - name: Checkout current repository content
+        uses: actions/checkout@v3 # Checkout the repository content to github runner.
+
+      - name: Checkout script repository content
+        uses: actions/checkout@v3 # Checkout the repository content to github runner.
+        with:
+          repository: samantha-tran/test-repo
+          path: ./script
 
       - name: Set up python version
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v3
         with:
-          python-version: "3.8" # Install the python version needed
+          python-version: "3.10" # Install the python version needed
 
       - name: Install Python dependencies
         run: |
@@ -30,4 +36,4 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Execute Python script # Run the run.py to get the latest data
-        run: python test.py
+        run: python ./script/test.py
