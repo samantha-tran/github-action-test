@@ -44,7 +44,7 @@ jobs:
           cat log.txt >> $GITHUB_STEP_SUMMARY
 
   Merge-PR:
-    needs: Create Repo
+    needs: Create-Repo
     runs-on: ubuntu-latest
     if: ${{ always() && contains(join(needs.*.result, ','), 'success') }}
     steps:
