@@ -11,7 +11,7 @@ on:
     branches: ["main"] # Triggers the workflow when a pull request is created on the "main" branch
 
 jobs:
-  Ccreate-Repo:
+  Create-Repo:
     runs-on: ubuntu-latest # runs on VM provisionned with ubuntu image
 
     steps:
