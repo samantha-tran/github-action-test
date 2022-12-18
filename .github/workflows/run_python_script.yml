@@ -11,7 +11,7 @@ on:
     branches: ["main"] # Triggers the workflow when a pull request is created on the "main" branch
 
 jobs:
-  run-script:
+  Create-Repo:
     runs-on: ubuntu-latest # runs on VM provisionned with ubuntu image
 
     steps:
@@ -43,8 +43,8 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           cat log.txt >> $GITHUB_STEP_SUMMARY
 
-  Merge-if-successfully:
-    needs: run-script
+  Merge-PR:
+    needs: Create-Repo
     runs-on: ubuntu-latest
     if: ${{ always() && contains(join(needs.*.result, ','), 'success') }}
     steps:
